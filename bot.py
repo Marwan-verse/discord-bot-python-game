@@ -5,44 +5,49 @@ from discord.ui import View, Button, Select
 
 # Array of 200 words for the game
 
-# English and Arabic word lists
-ENGLISH_WORDS = [
-    "apple", "banana", "car", "dog", "elephant", "flower", "guitar", "house", "island", "jungle",
-    "kangaroo", "lemon", "mountain", "notebook", "ocean", "piano", "queen", "river", "sun", "tree",
-    "umbrella", "violin", "window", "xylophone", "yacht", "zebra", "airplane", "balloon", "camera", "diamond",
-    "engine", "forest", "garden", "hat", "ice", "jacket", "kite", "lamp", "mirror", "necklace",
-    "orange", "pencil", "quilt", "robot", "star", "train", "unicorn", "vase", "whale", "x-ray",
-    "yogurt", "zipper", "anchor", "bridge", "castle", "drum", "eagle", "fan", "glove", "hammer",
-    "igloo", "jewel", "key", "ladder", "magnet", "needle", "owl", "pumpkin", "quartz", "rocket",
-    "sail", "tiger", "urn", "volcano", "wheel", "xenon", "yarn", "zeppelin", "ant", "bread",
-    "cloud", "desk", "egg", "flag", "grape", "hill", "ink", "jeans", "kettle", "leaf",
-    "moon", "nest", "octopus", "pearl", "quiver", "rose", "ship", "table", "uniform", "vulture",
-    "wolf", "xmas", "yak", "zoo", "arch", "beach", "circle", "dolphin", "earth", "feather",
-    "gate", "horn", "iron", "jungle", "knee", "lake", "mask", "net", "opera", "parrot",
-    "quokka", "ring", "swan", "tower", "urchin", "valley", "wand", "xenops", "yeti", "zucchini",
-    "apron", "bottle", "candle", "daisy", "engineer", "fence", "globe", "harp", "igloo", "jacket",
-    "koala", "lizard", "mango", "needle", "olive", "panda", "quokka", "raven", "scooter", "tulip",
-    "urn", "viking", "waffle", "xylophonist", "yawn", "zeppelin", "atlas", "bison", "cactus", "dune",
-    "ember", "fjord", "grove", "heron", "iris", "jigsaw", "kelp", "lighthouse", "mantis", "nectar",
-    "onyx", "plaza", "quartzite", "reef", "sphinx", "trumpet", "utensil", "vine", "wombat", "xerox",
-    "yodel", "zenith"
-]
 
-ARABIC_WORDS = [
-    "تفاحة", "موز", "سيارة", "كلب", "فيل", "زهرة", "جيتار", "منزل", "جزيرة", "غابة",
-    "كنغر", "ليمون", "جبل", "دفتر", "محيط", "بيانو", "ملكة", "نهر", "شمس", "شجرة",
-    "مظلة", "كمان", "نافذة", "إكسليفون", "يخت", "حمار وحشي", "طائرة", "بالون", "كاميرا", "ألماس",
-    "محرك", "غابة", "حديقة", "قبعة", "ثلج", "سترة", "طائرة ورقية", "مصباح", "مرآة", "قلادة",
-    "برتقال", "قلم رصاص", "لحاف", "روبوت", "نجمة", "قطار", "يونيكورن", "مزهرية", "حوت", "أشعة سينية",
-    "زبادي", "سحاب", "مرساة", "جسر", "قلعة", "طبلة", "نسر", "مروحة", "قفاز", "مطرقة",
-    "إيغلو", "جوهرة", "مفتاح", "سلم", "مغناطيس", "إبرة", "بومة", "يقطين", "كوارتز", "صاروخ",
-    "شراع", "نمر", "جرة", "بركان", "عجلة", "زينون", "خيط", "منطاد", "نملة", "خبز",
-    "سحابة", "مكتب", "بيضة", "علم", "عنب", "تل", "حبر", "جينز", "غلاية", "ورقة",
-    "قمر", "عش", "أخطبوط", "لؤلؤة", "جعبة", "وردة", "سفينة", "طاولة", "زي رسمي", "نسر",
-    "ذئب", "عيد الميلاد", "ياك", "حديقة حيوان", "قوس", "شاطئ", "دائرة", "دلفين", "أرض", "ريشة",
-    "بوابة", "بوق", "حديد", "أدغال", "ركبة", "بحيرة", "قناع", "شبكة", "أوبرا", "ببغاء"
-    # ... add more Arabic words as needed ...
-]
+
+# English word categories
+FOODS_EN = ["bread", "egg", "cheese", "yogurt", "waffle", "pumpkin", "candy", "honey", "soup", "salad"]
+ANIMALS_EN = ["dog", "elephant", "kangaroo", "tiger", "wolf", "yak", "zebra", "owl", "panda", "dolphin"]
+FRUITS_EN = ["apple", "banana", "lemon", "grape", "orange", "mango", "olive", "peach", "pear", "apricot"]
+PLACES_EN = ["beach", "castle", "garden", "opera", "zoo", "school", "museum", "market", "station", "hotel"]
+OBJECTS_EN = ["car", "guitar", "house", "notebook", "piano", "camera", "diamond", "mirror", "lamp", "robot"]
+CLOTHES_EN = ["jacket", "hat", "jeans", "apron", "uniform", "scarf", "glove", "mask", "skirt", "shirt"]
+NATURE_EN = ["mountain", "river", "ocean", "island", "forest", "hill", "valley", "desert", "reef", "grove"]
+JOBS_EN = ["engineer", "queen", "viking", "pirate", "artist", "doctor", "pilot", "chef", "teacher", "farmer"]
+
+# Arabic word categories
+FOODS_AR = ["خبز", "بيضة", "جبن", "زبادي", "وافل", "يقطين", "حلوى", "عسل", "شوربة", "سلطة"]
+ANIMALS_AR = ["كلب", "فيل", "كنغر", "نمر", "ذئب", "ياك", "حمار وحشي", "بومة", "باندا", "دلفين"]
+FRUITS_AR = ["تفاحة", "موز", "ليمون", "عنب", "برتقال", "مانجو", "زيتون", "خوخ", "كمثرى", "مشمش"]
+PLACES_AR = ["شاطئ", "قلعة", "حديقة", "أوبرا", "حديقة حيوان", "مدرسة", "متحف", "سوق", "محطة", "فندق"]
+OBJECTS_AR = ["سيارة", "جيتار", "منزل", "دفتر", "بيانو", "كاميرا", "ألماس", "مرآة", "مصباح", "روبوت"]
+CLOTHES_AR = ["سترة", "قبعة", "جينز", "مريول", "زي رسمي", "وشاح", "قفاز", "قناع", "تنورة", "قميص"]
+NATURE_AR = ["جبل", "نهر", "محيط", "جزيرة", "غابة", "تل", "وادي", "صحراء", "شعاب مرجانية", "بستان"]
+JOBS_AR = ["مهندس", "ملكة", "فايكنج", "قرصان", "فنان", "طبيب", "طيار", "طباخ", "معلم", "مزارع"]
+
+# Category mapping for random selection and display
+CATEGORIES_EN = {
+    "Foods": FOODS_EN,
+    "Animals": ANIMALS_EN,
+    "Fruits": FRUITS_EN,
+    "Places": PLACES_EN,
+    "Objects": OBJECTS_EN,
+    "Clothes": CLOTHES_EN,
+    "Nature": NATURE_EN,
+    "Jobs": JOBS_EN
+}
+CATEGORIES_AR = {
+    "طعام": FOODS_AR,
+    "حيوانات": ANIMALS_AR,
+    "فاكهة": FRUITS_AR,
+    "أماكن": PLACES_AR,
+    "أشياء": OBJECTS_AR,
+    "ملابس": CLOTHES_AR,
+    "طبيعة": NATURE_AR,
+    "وظائف": JOBS_AR
+}
 from discord.ext import commands
 
 intents = discord.Intents.default()
@@ -77,6 +82,7 @@ class ImposterGameView(View):
             return
         self.players.add(interaction.user)
         await interaction.response.send_message(f"{interaction.user.mention} joined the game!", ephemeral=True)
+
     @discord.ui.select(
         placeholder="Select language...",
         options=[
@@ -88,6 +94,7 @@ class ImposterGameView(View):
     async def select_language(self, interaction: discord.Interaction, select: Select):
         self.language = select.values[0]
         await interaction.response.send_message(f"Language set to {self.language}", ephemeral=True)
+
     @discord.ui.button(label="Start Game", style=discord.ButtonStyle.success, custom_id="start_btn")
     async def start(self, interaction: discord.Interaction, button: Button):
         if self.started:
@@ -98,15 +105,21 @@ class ImposterGameView(View):
             return
         self.started = True
         lang = self.language
-        word_list = ARABIC_WORDS if lang == 'arabic' else ENGLISH_WORDS
-        self.word = random.choice(word_list)
+        if lang == 'arabic':
+            categories = CATEGORIES_AR
+        else:
+            categories = CATEGORIES_EN
+        category = random.choice(list(categories.keys()))
+        word = random.choice(categories[category])
+        self.word = word
+        self.category = category
         spy = random.choice(list(self.players))
         for player in self.players:
             try:
                 if player == spy:
-                    await player.send("أنت الجاسوس! حاول تخمين الكلمة من الأدلة." if lang == 'arabic' else "You are the spy! Try to guess the word from clues.")
+                    await player.send((f"أنت الجاسوس! التصنيف: {category}" if lang == 'arabic' else f"You are the spy! The category is: {category}"))
                 else:
-                    await player.send(f"الكلمة السرية هي: {self.word}" if lang == 'arabic' else f"The secret word is: {self.word}")
+                    await player.send((f"الكلمة السرية هي: {word}\nالتصنيف: {category}" if lang == 'arabic' else f"The secret word is: {word}\nCategory: {category}"))
             except Exception:
                 pass
         await interaction.response.edit_message(content=(f"{spy.mention} يبدأ! أعطِ دليلاً للكلمة." if lang == 'arabic' else f"{spy.mention} is chosen to start! Give a clue for the word."), view=None)
