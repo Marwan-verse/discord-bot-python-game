@@ -152,4 +152,4 @@ async def on_ready():
     except Exception as e:
         print(f"Failed to sync commands: {e}")
 
-bot.run('YOUR_BOT_TOKEN')
+bot.run('')
